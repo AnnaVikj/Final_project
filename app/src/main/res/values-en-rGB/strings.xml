@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Information Dispatch Service</string>
+    <string name="password">Input password</string>
+    <string name="entrance">Entrance</string>
+    <string name="street">Street</string>
+    <string name="input_street">Input street</string>
+    <string name="description">Description</string>
+    <string name="input_description">"Input description "</string>
+    <string name="fio">Name, Lastname</string>
+    <string name="input_fio">Input name, lastname</string>
+    <string name="head">Head</string>
+    <string name="hand">Hand(-s)</string>
+    <string name="leg">Leg(-s)</string>
+    <string name="high">Upper torso</string>
+    <string name="lower">Lower torso</string>
+    <string name="all">The whole body</string>
+    <string name="high_st">Serious condition</string>
+    <string name="middle_st">Average condition</string>
+    <string name="back">Back</string>
+    <string name="save">Save</string>
+    <string name="add">Add</string>
+</resources>

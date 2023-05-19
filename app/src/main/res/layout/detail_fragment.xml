@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:padding="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardUseCompatPadding="true">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/street"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:typeface="serif"/>
+
+        <EditText
+            android:id="@+id/street"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_street"
+            android:textSize="20sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:typeface="serif" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/description"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:typeface="serif"
+            />
+
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:textSize="19.65sp"
+            android:hint="@string/input_description"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:typeface="serif"
+            tools:maxLines="3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioGroup
+                android:id="@+id/radioGroup2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RadioButton
+                    android:id="@+id/head"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#AC6C5C"
+                    android:layout_weight="1"
+                    android:text="@string/head"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+                <RadioButton
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:id="@+id/hands"
+                    android:buttonTint="#AC6C5C"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/hand"/>
+                <RadioButton
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:id="@+id/foots"
+                    android:buttonTint="#AC6C5C"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/leg"/>
+                <RadioButton
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:id="@+id/lower_torso"
+                    android:buttonTint="#AC6C5C"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/lower"/>
+                <RadioButton
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:id="@+id/high_torso"
+                    android:buttonTint="#AC6C5C"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/high"/>
+                <RadioButton
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:id="@+id/all"
+                    android:buttonTint="#AC6C5C"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/all"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fio"
+            android:typeface="serif"
+            android:textSize="20sp"
+            android:padding="5dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+        <EditText
+            android:id="@+id/fio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="19.5sp"
+            android:typeface="serif"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:hint="@string/input_fio" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <RadioGroup
+                android:id="@+id/radioGroup1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:id="@+id/high"
+                    android:buttonTint="#CC0000"
+                    android:text="@string/high_st"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"/>
+
+                <RadioButton
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:id="@+id/middle"
+                    android:text="@string/middle_st"
+                    android:buttonTint="#0079CF"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/back"
+                android:backgroundTint="#8E8E93"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:text="@string/back" />
+            <Button
+                android:id="@+id/saveoradd"
+                android:backgroundTint="#9930CC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:text="@string/save" />
+
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Information Dispatch Service</string>
+    <string name="password">Введите пароль</string>
+    <string name="entrance">Вход</string>
+    <string name="street">Улица</string>
+    <string name="input_street">Введите улицу</string>
+    <string name="description">Описание болезни</string>
+    <string name="input_description">Введите описание</string>
+    <string name="fio">ФИО больного</string>
+    <string name="input_fio">Введите ФИО</string>
+    <string name="head">Голова</string>
+    <string name="hand">Рука(-и)</string>
+    <string name="leg">Нога(-и)</string>
+    <string name="high">Верхняя часть туловища</string>
+    <string name="lower">Нижняя часть туловища</string>
+    <string name="all">Всё тело</string>
+    <string name="high_st">Состояние тяжелое</string>
+    <string name="middle_st">Состояние среднее</string>
+    <string name="back">Назад</string>
+    <string name="save">Сохранить</string>
+    <string name="add">Добавить</string>
+</resources>
