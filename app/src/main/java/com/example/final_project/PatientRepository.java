@@ -2,39 +2,88 @@ package com.example.final_project;
 
 import android.content.Context;
 
-import androidx.room.Room;
-import androidx.room.RoomDatabase;
+import androidx.annotation.NonNull;
 
-import com.example.final_project.data.PatientBase;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PatientRepository {
     public static PatientRepository instance = null;
-    public PatientBase roomdb;
+    private DatabaseReference DataBase;
+    private String PATIENT_KEY = "Patient";
+    public List<Patient> roomdb;
     public static PatientRepository getInstance(Context context) {
         if (instance == null) instance = new PatientRepository(context);
         return instance;
     }
 
     public PatientRepository(Context context){
-        roomdb = Room.databaseBuilder(context, PatientBase.class, "patient_room.db")
-                .allowMainThreadQueries().build();
+        DataBase = FirebaseDatabase.getInstance().getReference(PATIENT_KEY);
+        roomdb = new ArrayList<>();
     }
     public List<Patient> getPatients(){
-        return roomdb.patientDao().getAll();
+        return roomdb;
     }
 
     public void addPatient(Patient patient){
-        roomdb.patientDao().insertAll(patient);
+
+        if(patient.getCondition() == null){
+            patient.setCondition("");
+        }
+        if(patient.getBody() == null){
+            patient.setBody("");
+        }
+        if(patient.getFio() == null){
+            patient.setFio("");
+        }
+        if(patient.getDescription() == null){
+            patient.setDescription("");
+        }
+        DataBase.push().setValue(patient);
     }
 
     public void removeByPosition(Patient patient) {
-        roomdb.patientDao().delete(patient);
+        roomdb.remove(patient);
     }
 
-    public void updatePatient(Patient temp) {
+    /*public void updatePatient(Patient temp) {
         roomdb.patientDao().update(temp);
+    }*/
+
+    public void Firebase(){
+
+        DataBase = FirebaseDatabase.getInstance().getReference(PATIENT_KEY);
+        if (roomdb != null){
+            roomdb.clear();
+        }
+
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for (DataSnapshot ds: snapshot.getChildren()) {
+                    String street = ds.getValue(Patient.class).getStreet();
+                    String description = ds.getValue(Patient.class).getDescription();
+                    String fio = ds.getValue(Patient.class).getFio();
+                    String body = ds.getValue(Patient.class).getBody();
+                    String status = ds.getValue(Patient.class).getCondition();
+                    Patient patient = new Patient(street, description, fio, body, status);
+                    roomdb.add(patient);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+        DataBase.addValueEventListener(listener);
     }
 }

@@ -138,7 +138,7 @@ public class DetailFragment extends Fragment {
                             data.setFio(binding.fio.getText().toString());
                             data.setBody(body_name);
                             data.setCondition(status2);
-                            repository.updatePatient(data);
+                            //repository.updatePatient(data);
                         } else {
                             repository.addPatient(new Patient(
                                     binding.street.getText().toString(),

@@ -1,26 +1,20 @@
 package com.example.final_project;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
 
 import java.util.Objects;
-@Entity
+
 public class Patient {
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
+
     private long id;
-    @ColumnInfo(name = "street")
     private String street;
-    @ColumnInfo(name = "description")
     private String description;
-    @ColumnInfo(name = "fio")
     private String fio;
-    @ColumnInfo(name = "body")
     private String body;
-    @ColumnInfo(name = "condition")
     private String condition;
 
+    public Patient(){
+
+    }
     public Patient(String street, String description, String fio, String body, String condition) {
         this.street = street;
         this.description = description;

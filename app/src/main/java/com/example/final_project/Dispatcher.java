@@ -22,6 +22,7 @@ private PatientRepository repository = null;
         if (repository == null) repository = PatientRepository.getInstance(getApplicationContext());
         setContentView(binding.getRoot());
 
+        repository.Firebase();
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentById(R.id.rootContainer);
         if (fragment == null) {
@@ -31,6 +32,7 @@ private PatientRepository repository = null;
                     .replace(R.id.rootContainer, fragment, String.valueOf(false))
                     .commit();
         }
+
     }
 
     @Override
