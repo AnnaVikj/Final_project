@@ -36,17 +36,18 @@ public class MainFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentMainBinding binding = FragmentMainBinding.inflate(inflater, container, false);
         binding.container.setAdapter(adapter);
+        binding.update.setOnClickListener(v -> {
+            adapter.setData(repository.getPatients());
+        });
         binding.add.setOnClickListener(v -> {
             getParentFragmentManager()
                     .beginTransaction()
                     .replace(R.id.rootContainer, DetailFragment.newInstance(repository,-1,0))
                     .commit();
 
-            //   repository.addProduct(new ProductData("Product " + count++, count % 2 == 0 ? "test description\nmultiLine\nexample\ntest" : "", (int) (Math.random() * 100)));
-            Log.d("Add", "" + repository.getPatients().size());
-            adapter.setData(repository.getPatients());
+            //adapter.setData(repository.getPatients());
         });
-        adapter.setData(repository.getPatients());
+        //adapter.setData(repository.getPatients());
         return binding.getRoot();
     }
 

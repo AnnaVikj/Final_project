@@ -21,8 +21,6 @@ private PatientRepository repository = null;
         String s = getIntent().getStringExtra("dispatcher");
         if (repository == null) repository = PatientRepository.getInstance(getApplicationContext());
         setContentView(binding.getRoot());
-
-        repository.Firebase();
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentById(R.id.rootContainer);
         if (fragment == null) {

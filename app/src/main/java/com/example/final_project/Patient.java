@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Patient {
 
-    private long id;
+    private String id;
     private String street;
     private String description;
     private String fio;
@@ -15,6 +15,7 @@ public class Patient {
     public Patient(){
 
     }
+
     public Patient(String street, String description, String fio, String body, String condition) {
         this.street = street;
         this.description = description;
@@ -23,11 +24,11 @@ public class Patient {
         this.condition = condition;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

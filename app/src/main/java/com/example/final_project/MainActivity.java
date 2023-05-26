@@ -9,7 +9,7 @@ import android.widget.Toast;
 import com.example.final_project.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-
+    private PatientRepository repository = null;
     public ActivityMainBinding binding;
     private final String dispatcher = "dis";
     private final String doctor = "doc";
@@ -17,8 +17,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
+        if (repository == null) repository = PatientRepository.getInstance(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(binding.getRoot());
+        repository.Firebase();
         binding.login.setOnClickListener(view -> check());
     }
 

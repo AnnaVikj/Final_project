@@ -56,7 +56,7 @@ public class MarcDocFragment extends Fragment {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     Patient patient = repository.getPatients().get(holder.getAdapterPosition());
-                    repository.removeByPosition(patient);
+                    repository.removeByPosition(holder.getAdapterPosition(), patient.getStreet());
                     adapter.removeItemByPosition(holder.getAdapterPosition());
                 }
             });

@@ -15,6 +15,16 @@
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        app:backgroundTint="@color/white"
+        android:layout_margin="12dp"
+        app:fabCustomSize="35dp"
+        android:src="@drawable/ic_baseline_autorenew_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"

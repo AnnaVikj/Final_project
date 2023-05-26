@@ -3,12 +3,15 @@ package com.example.final_project;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -49,8 +52,23 @@ public class PatientRepository {
         DataBase.push().setValue(patient);
     }
 
-    public void removeByPosition(Patient patient) {
-        roomdb.remove(patient);
+    public void removeByPosition(int position, String street) {
+        roomdb.remove(position);
+        /*Query streets = DataBase.child("Patient").orderByChild("street").equalTo(street);
+        
+        streets.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
+                    appleSnapshot.getRef().removeValue();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });*/
+
     }
 
     /*public void updatePatient(Patient temp) {
@@ -58,7 +76,6 @@ public class PatientRepository {
     }*/
 
     public void Firebase(){
-
         DataBase = FirebaseDatabase.getInstance().getReference(PATIENT_KEY);
         if (roomdb != null){
             roomdb.clear();

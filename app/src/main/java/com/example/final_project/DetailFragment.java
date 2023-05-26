@@ -11,6 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.final_project.databinding.DetailFragmentBinding;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class DetailFragment extends Fragment {
     private final PatientRepository repository = PatientRepository.getInstance(getContext());
@@ -25,7 +27,6 @@ public class DetailFragment extends Fragment {
         flag1 = flag;
         if (position >= 0) {
             data = repository.getPatients().get(position);
-            bundle.putString("id", String.valueOf(data.getId()));
             bundle.putString("street", data.getStreet());
             bundle.putString("description", data.getDescription());
             bundle.putString("fio", data.getFio());
