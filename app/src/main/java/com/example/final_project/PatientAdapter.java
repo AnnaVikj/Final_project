@@ -15,15 +15,15 @@ import java.util.List;
 public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.viewHolder> {
 private final ArrayList<Patient> data = new ArrayList<>();
 
-    public PatientAdapter(OnPatientDataClickListener clickListener) {
+    /*public PatientAdapter() {
         this.clickListener = clickListener;
-    }
+    }*/
 
     interface OnPatientDataClickListener {
         void onPatientClick(RecyclerView.ViewHolder holder);
     }
 
-    private final OnPatientDataClickListener clickListener;
+    //private final OnPatientDataClickListener clickListener;
 
     @NonNull
     @Override
@@ -42,12 +42,12 @@ private final ArrayList<Patient> data = new ArrayList<>();
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
 
         holder.bind(data.get(position));
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        /*holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 clickListener.onPatientClick(holder);
             }
-        });
+        });*/
     }
 
     @Override

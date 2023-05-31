@@ -3,15 +3,13 @@ package com.example.final_project;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 
-import com.google.firebase.database.ChildEventListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -20,9 +18,12 @@ import java.util.List;
 public class PatientRepository {
     public static PatientRepository instance = null;
     private DatabaseReference DataBase;
+    public boolean flag = true;
     private String PATIENT_KEY = "Patient";
     public List<Patient> roomdb;
-    public static PatientRepository getInstance(Context context) {
+
+
+    public static PatientRepository init(Context context) {
         if (instance == null) instance = new PatientRepository(context);
         return instance;
     }
@@ -49,38 +50,22 @@ public class PatientRepository {
         if(patient.getDescription() == null){
             patient.setDescription("");
         }
+
+        roomdb.add(patient);
         DataBase.push().setValue(patient);
     }
 
-    public void removeByPosition(int position, String street) {
-        roomdb.remove(position);
-        /*Query streets = DataBase.child("Patient").orderByChild("street").equalTo(street);
-        
-        streets.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
-                    appleSnapshot.getRef().removeValue();
-                }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });*/
-
+    public void clear(){
+        roomdb.clear();
     }
-
-    /*public void updatePatient(Patient temp) {
-        roomdb.patientDao().update(temp);
-    }*/
 
     public void Firebase(){
         DataBase = FirebaseDatabase.getInstance().getReference(PATIENT_KEY);
-        if (roomdb != null){
+
+        if(roomdb != null){
             roomdb.clear();
         }
-
         ValueEventListener listener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -93,6 +78,7 @@ public class PatientRepository {
                     String status = ds.getValue(Patient.class).getCondition();
                     Patient patient = new Patient(street, description, fio, body, status);
                     roomdb.add(patient);
+                    flag = false;
                 }
             }
 

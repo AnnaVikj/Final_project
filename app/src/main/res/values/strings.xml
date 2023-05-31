@@ -17,6 +17,6 @@
     <string name="high_st">Состояние тяжелое</string>
     <string name="middle_st">Состояние среднее</string>
     <string name="back">Назад</string>
-    <string name="save">Сохранить</string>
+    <string name="save">ОК</string>
     <string name="add">Добавить</string>
 </resources>

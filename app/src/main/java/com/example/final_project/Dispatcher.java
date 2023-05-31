@@ -19,7 +19,7 @@ private PatientRepository repository = null;
         super.onCreate(savedInstanceState);
         binding = ActivityDispatcherBinding.inflate(getLayoutInflater());
         String s = getIntent().getStringExtra("dispatcher");
-        if (repository == null) repository = PatientRepository.getInstance(getApplicationContext());
+        if (repository == null) repository = PatientRepository.init(getApplicationContext());
         setContentView(binding.getRoot());
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentById(R.id.rootContainer);

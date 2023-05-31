@@ -18,7 +18,7 @@ public class MarkUpDoc extends AppCompatActivity {
         String name = getIntent().getStringExtra("name2");
         binding = ContainerMarkDocBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        if (repository == null) PatientRepository.getInstance(getApplicationContext());
+        if (repository == null) PatientRepository.init(getApplicationContext());
 
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentById(R.id.ContainerMarc);

@@ -18,8 +18,8 @@ import com.example.final_project.databinding.ActivityDispatcherBinding;
 import com.example.final_project.databinding.FragmentMainBinding;
 
 public class MainFragment extends Fragment {
-    private final PatientRepository repository = PatientRepository.getInstance(getContext());
-    PatientAdapter.OnPatientDataClickListener productClickListener = new PatientAdapter.OnPatientDataClickListener() {
+    private final PatientRepository repository = PatientRepository.init(getContext());
+    /*PatientAdapter.OnPatientDataClickListener productClickListener = new PatientAdapter.OnPatientDataClickListener() {
         @Override
         public void onPatientClick(RecyclerView.ViewHolder holder) {
 
@@ -28,26 +28,22 @@ public class MainFragment extends Fragment {
                     .replace(R.id.rootContainer, DetailFragment.newInstance(repository, holder.getAdapterPosition(),1))
                     .commit();
         }
-    };
-    private final PatientAdapter adapter = new PatientAdapter(productClickListener);
+    };*/
+    private final PatientAdapter adapter = new PatientAdapter();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentMainBinding binding = FragmentMainBinding.inflate(inflater, container, false);
         binding.container.setAdapter(adapter);
-        binding.update.setOnClickListener(v -> {
-            adapter.setData(repository.getPatients());
-        });
         binding.add.setOnClickListener(v -> {
             getParentFragmentManager()
                     .beginTransaction()
                     .replace(R.id.rootContainer, DetailFragment.newInstance(repository,-1,0))
                     .commit();
-
-            //adapter.setData(repository.getPatients());
+            adapter.setData(repository.getPatients());
         });
-        //adapter.setData(repository.getPatients());
+        adapter.setData(repository.getPatients());
         return binding.getRoot();
     }
 

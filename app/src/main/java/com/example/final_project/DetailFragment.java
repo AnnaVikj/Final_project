@@ -15,7 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class DetailFragment extends Fragment {
-    private final PatientRepository repository = PatientRepository.getInstance(getContext());
+    private final PatientRepository repository = PatientRepository.init(getContext());
     private static Patient data;
     private static String body_name = "";
     private static String status2 = "";
@@ -96,8 +96,12 @@ public class DetailFragment extends Fragment {
                             .beginTransaction()
                             .replace(R.id.rootContainer, new MainFragment())
                             .commit();
-                body_name = data.getBody();
-                status2 = data.getCondition();}
+                    if (data.getBody() != null) {
+                        body_name = data.getBody();}
+                    if(data.getCondition() != null){
+                        status2 = data.getCondition();
+                    }
+                }
         );
 
         binding.head.setOnClickListener(v -> {
@@ -133,28 +137,19 @@ public class DetailFragment extends Fragment {
                     if (binding.street.getText().toString().equals("")) {
                         Toast.makeText(getContext(), "Улица не заполнена!", Toast.LENGTH_SHORT).show();
                     } else {
-                        if (flag1 == 1) {
-                            data.setStreet(binding.street.getText().toString());
-                            data.setDescription(binding.description.getText().toString());
-                            data.setFio(binding.fio.getText().toString());
-                            data.setBody(body_name);
-                            data.setCondition(status2);
-                            //repository.updatePatient(data);
-                        } else {
-                            repository.addPatient(new Patient(
-                                    binding.street.getText().toString(),
-                                    binding.description.getText().toString(),
-                                    binding.fio.getText().toString(),
-                                    body_name,
-                                    status2
-                            ));
-                        }
-
-                        getParentFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.rootContainer, new MainFragment())
-                                .commit();
+                        repository.addPatient(new Patient(
+                                binding.street.getText().toString(),
+                                binding.description.getText().toString(),
+                                binding.fio.getText().toString(),
+                                body_name,
+                                status2
+                        ));
                     }
+
+                    getParentFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.rootContainer, new MainFragment())
+                            .commit();
                 }
         );
     }

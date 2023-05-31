@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.final_project.databinding.ActivityMarkUpDocBinding;
 
 public class MarcDocFragment extends Fragment {
-    private final PatientRepository repository = PatientRepository.getInstance(getContext());
+    private final PatientRepository repository = PatientRepository.init(getContext());
     private MarkUpDoc markUpDoc = new MarkUpDoc();
 
     PatientAdapterDoc.OnPatientDataClickListener patientClickListener = new PatientAdapterDoc.OnPatientDataClickListener() {
@@ -47,17 +47,9 @@ public class MarcDocFragment extends Fragment {
                     + repository.getPatients().get(holder.getAdapterPosition()).getFio() + "\n"
                     + repository.getPatients().get(holder.getAdapterPosition()).getCondition() + "\n" + "\n"
                     + "Принять пациента?");
-            builder.setNeutralButton("Нет", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton("ОК", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                }
-            });
-            builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Patient patient = repository.getPatients().get(holder.getAdapterPosition());
-                    repository.removeByPosition(holder.getAdapterPosition(), patient.getStreet());
-                    adapter.removeItemByPosition(holder.getAdapterPosition());
                 }
             });
             AlertDialog alert = builder.create();
